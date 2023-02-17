@@ -1,10 +1,9 @@
-//external imports
 const express = require('express');
 const router = express.Router();
 
 //internal imports
-const {getUsers} = require('../controller/usersController');
+const {getLogin} = require('../../controller/admin/loginController');
 
-router.get('/', getUsers);
+router.get('/', getLogin);
 
 module.exports = router;

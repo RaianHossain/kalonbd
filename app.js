@@ -7,11 +7,12 @@ const cookieParser = require("cookie-parser");
 
 //internal imports
 const {notFoundHanlder, errorHandler} = require("./midlewares/common/errorHanlder");
-const loginRouter = require("./router/loginRouter");
-const usersRouter = require("./router/usersRouter");
 const inboxRouter = require("./router/inboxRouter");
-const dashboardRouter = require("./router/admin-dashboard/dashboardRouter");
 const decorateHTMLResponse = require('./midlewares/common/decorateHTMLResponse');
+const loginRouter = require("./router/admin/loginRouter");
+const usersRouter = require("./router/admin/usersRouter");
+const dashboardRouter = require("./router/admin/dashboardRouter");
+const categoryRouter = require("./router/admin/categoryRouter");
 
 const app = express();
 dotenv.config();
@@ -42,6 +43,7 @@ app.use('/login', decorateHTMLResponse('Login'), loginRouter);
 app.use('/users', decorateHTMLResponse('Users'), usersRouter);
 app.use('/inbox', decorateHTMLResponse('Inbox'), inboxRouter);
 app.use('/admin', decorateHTMLResponse('Dashboard'), dashboardRouter);
+app.use('/admin/categories', decorateHTMLResponse('Category'), categoryRouter)
 
 //404 error handler
 app.use(notFoundHanlder);

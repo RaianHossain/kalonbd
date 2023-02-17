@@ -11,12 +11,21 @@ const categorySchema = mongoose.Schema({
         required: false,
     },
     parent_id: {
-        type: ObjectId,
+        type: mongoose.Types.ObjectId,
+        ref: "Category",
         required: false,
     },    
     avatar: {
         type: String,
+        required: false,
     },
+    products: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: "Product",
+            required: false
+        }
+    ]
 }, 
 {
     timestamps: true,
