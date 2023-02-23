@@ -1,6 +1,5 @@
 //external imports
 const express = require('express');
-const { route } = require('express/lib/application');
 const router = express.Router();
 
 //internal imports

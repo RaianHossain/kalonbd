@@ -25,7 +25,17 @@ const categorySchema = mongoose.Schema({
             ref: "Product",
             required: false
         }
-    ]
+    ],
+    createdBy: {
+        type: mongoose.Types.ObjectId,
+        ref: "User",
+        required: false
+    },
+    updatedBy: {
+        type: mongoose.Types.ObjectId,
+        ref: "User",
+        required: false
+    }
 }, 
 {
     timestamps: true,

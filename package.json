@@ -1,7 +1,7 @@
 {
-  "name": "chap-application",
+  "name": "kalonBD",
   "version": "1.0.0",
-  "description": "Chat application by LWS.",
+  "description": "KalonBD By Xploria IT",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

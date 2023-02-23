@@ -1,4 +1,4 @@
-const Category = require('../../models/Category');
+const Category = require('../../models/admin/Category');
 const path = require("path");
 const { unlink } = require("fs");
 
@@ -12,21 +12,22 @@ const getCategories = async (req, res) => {
 };
 
 const createCategory = async (req, res) => {
-    let newCategory;
+    let newCategory = {
+        name: req.body.name ? req.body.name : null,
+        description: req.body.description ? req.body.description : null,        
+        parent_id: req.body.parent_id ? req.body.parent_id : null,
+        createdBy: req.body.user.id ? req.body.user.id : null,
+    };
    
     if (req.files && req.files.length > 0) {
         newCategory = { 
-            name: req.body.name ? req.body.name : null,
-            description: req.body.description ? req.body.description : null,
+            ...newCategory,
             avatar: req.files[0].filename,
-            parent_id: req.body.parent_id ? req.body.parent_id : null
         }        
       } else {
         newCategory = { 
-            name: req.body.name,
-            description: req.body.description,
+            ...newCategory,
             avatar: null,
-            parent_id: req.body.parent_id ? req.body.parent_id : null
         }
       }
     try {
@@ -57,7 +58,8 @@ const updateCategory = async(req, res) => {
     
     let updatedObj = {
         parent_id: req.body.parent_id ? req.body.parent_id : categoryToUpdate.parent_id,
-        description: req.body.description ? req.body.description : categoryToUpdate.parent_id
+        description: req.body.description ? req.body.description : categoryToUpdate.parent_id,
+        updatedBy: req.body.user.id ? req.body.user.id : null,
     };
     
     if (req.files && req.files.length > 0) {
