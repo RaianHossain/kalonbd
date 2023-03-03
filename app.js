@@ -15,6 +15,7 @@ const usersRouter = require("./router/admin/usersRouter");
 const dashboardRouter = require("./router/admin/dashboardRouter");
 const categoryRouter = require("./router/admin/categoryRouter");
 const brandRouter = require("./router/admin/brandRouter");
+const deliveryDateRouter = require("./router/admin/deliveryDateRouter");
 
 const app = express();
 dotenv.config();
@@ -48,6 +49,7 @@ app.use('/inbox', decorateHTMLResponse('Inbox'), inboxRouter);
 app.use('/admin', decorateHTMLResponse('Dashboard'), dashboardRouter);
 app.use('/admin/categories', decorateHTMLResponse('Category'), categoryRouter)
 app.use('/admin/brands', decorateHTMLResponse('Brand'), brandRouter)
+app.use('/admin/delivery-dates', decorateHTMLResponse('DeliveryDate'), deliveryDateRouter)
 
 
 //404 error handler

@@ -55,7 +55,7 @@ const updateBrand = async(req, res) => {
     }
     
     let updatedObj = {
-        description: req.body.description ? req.body.description : brandToUpdate.parent_id
+        description: req.body.description ? req.body.description : brandToUpdate.description
     };
     
     if (req.files && req.files.length > 0) {
